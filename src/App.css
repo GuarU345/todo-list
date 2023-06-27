@@ -1,0 +1,43 @@
+body{
+    background-color: rgb(219, 219, 219);
+    padding: 5rem;
+}
+
+input[type="checkbox"]{
+    cursor: pointer;
+    background-color: #fff;
+    width: 32px;
+    height: 32px;
+    border: 2px solid #888;
+    border-radius: 100%;
+}
+
+.create-todo{
+    border: none;
+    padding: 2rem 1rem;
+    padding-left: 3.5rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #cccccc;
+}
+
+.create-todo:focus-visible{
+    outline: none;
+    border: 2px solid rgb(201, 19, 19)
+}
+
+span{
+    cursor: pointer;
+}
+
+.filters{
+    border: none;
+    background-color: white;
+}
+
+.filters:hover{
+    border: 1px solid red;
+}
+
+
+
