@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API_URL = "todo-list-api-production-419d.up.railway.app"
+const API_URL = "https://todo-list-api-production-419d.up.railway.app"
 
 export const getTodos = async() => {
     const resp = await axios.get(API_URL)
