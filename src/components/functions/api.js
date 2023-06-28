@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API_URL = "http://localhost:3333/api/todos"
+const API_URL = "todo-list-api-production-419d.up.railway.app"
 
 export const getTodos = async() => {
     const resp = await axios.get(API_URL)
