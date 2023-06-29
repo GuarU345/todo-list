@@ -90,7 +90,7 @@ const Todo = () => {
   }, [todos]);
 
   return (
-    <div>
+    <div style={{ paddingTop: "15vh" }}>
       <h1 style={{ textAlign: "center" }}>
         <span style={{ color: "red", fontSize: "3rem" }}>
           TODO <span style={{ color: "black" }}>-List</span>
@@ -122,8 +122,6 @@ const Todo = () => {
                 onChange={handleChangeCheck}
                 value={todo._id}
                 checked={todo.completed}
-                name=""
-                id=""
               />
               <p>{todo.title}</p>
               <button
