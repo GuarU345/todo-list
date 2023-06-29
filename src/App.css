@@ -1,43 +1,86 @@
-body{
-    background-color: rgb(219, 219, 219);
-    padding: 5rem;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-input[type="checkbox"]{
-    cursor: pointer;
-    background-color: #fff;
-    width: 32px;
+body {
+  background-color: rgb(219, 219, 219);
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+  background-color: #fff;
+  min-width: 16px;
+  height: 16px;
+  border: 2px solid #888;
+  border-radius: 100%;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid #cccccc;
+  padding: 4px 0;
+}
+
+.todo-item p {
+  padding: 8px 0;
+  margin: auto 0;
+  width: 100%;
+  text-align: left;
+}
+
+.todo-item button,
+.todo-item [type="checkbox"] {
+  margin: 0 4px;
+}
+
+.create-todo {
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  padding: 1rem 2em;
+  font-size: 1.25rem;
+}
+
+.create-todo:focus-visible {
+  outline: none;
+  border: 2px solid rgb(201, 19, 19);
+}
+
+span {
+  cursor: pointer;
+}
+
+.filters {
+  border: none;
+  background-color: white;
+}
+
+.filters:hover {
+  border: 1px solid red;
+}
+
+@media screen and (min-width: 768px) {
+  input[type="checkbox"] {
     height: 32px;
-    border: 2px solid #888;
-    border-radius: 100%;
+    min-width: 32px;
+  }
+
+  .todo-item {
+    font-size: 1.25rem;
+  }
+
+  .create-todo {
+    padding: 1rem 3em;
+  }
 }
-
-.create-todo{
-    border: none;
-    padding: 2rem 1rem;
-    padding-left: 3.5rem;
-    height: 3rem;
-    font-size: 1.5rem;
-    border-bottom: 1px solid #cccccc;
-}
-
-.create-todo:focus-visible{
-    outline: none;
-    border: 2px solid rgb(201, 19, 19)
-}
-
-span{
-    cursor: pointer;
-}
-
-.filters{
-    border: none;
-    background-color: white;
-}
-
-.filters:hover{
-    border: 1px solid red;
-}
-
-
-

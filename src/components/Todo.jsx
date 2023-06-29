@@ -27,11 +27,11 @@ const Todo = () => {
     await deleteTodo(id);
   };
 
-  const handleClick = async(event) => {
+  const handleClick = async (event) => {
     event.preventDefault();
     const todoId = event.target.value;
     await deleteOneTodo(todoId);
-    getAllTodos()
+    getAllTodos();
   };
 
   const handleClickAll = async (event) => {
@@ -58,7 +58,7 @@ const Todo = () => {
       };
       await createTodo(titleObj);
       setTitle("");
-      getAllTodos()
+      getAllTodos();
     }
   };
 
@@ -74,7 +74,7 @@ const Todo = () => {
       completed: checked,
     };
     await checkTodo(todoId, body);
-    getAllTodos()
+    getAllTodos();
   };
 
   useEffect(() => {
@@ -90,23 +90,21 @@ const Todo = () => {
   }, [todos]);
 
   return (
-    <div
-      style={{ display: "grid", placeContent: "center", textAlign: "center" }}
-    >
-      <span style={{ color: "red", fontSize: "3rem" }}>
-        TODO <span style={{ color: "black" }}>-List</span>
-      </span>
+    <div>
+      <h1 style={{ textAlign: "center" }}>
+        <span style={{ color: "red", fontSize: "3rem" }}>
+          TODO <span style={{ color: "black" }}>-List</span>
+        </span>
+      </h1>
       <section
         style={{
-          display: "flex",
-          flexDirection: "column",
           backgroundColor: "white",
           borderRadius: "0.2rem",
-          width: "550px",
           boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
         }}
       >
         <input
+          style={{ width: "100%" }}
           type="text"
           className="create-todo"
           placeholder="¿Que quieres hacer?"
@@ -117,50 +115,34 @@ const Todo = () => {
         />
         {filter.map((todo) => {
           return (
-            <div
-              key={todo._id}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: "1rem",
-                borderBottom: "1px solid #cccccc",
-                height: "3rem",
-                fontSize: "1.5rem",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "1rem",
-                  paddingLeft: "0.5rem",
-                }}
+            <div key={todo._id} className="todo-item">
+              <input
+                className="check-todo"
+                type="checkbox"
+                onChange={handleChangeCheck}
+                value={todo._id}
+                checked={todo.completed}
+                name=""
+                id=""
+              />
+              <p>{todo.title}</p>
+              <button
+                className="btn btn-danger"
+                onClick={handleClick}
+                value={todo._id}
               >
-                <input
-                  className="check-todo"
-                  type="checkbox"
-                  onChange={handleChangeCheck}
-                  value={todo._id}
-                  checked={todo.completed}
-                  name=""
-                  id=""
-                />
-                <span>{todo.title}</span>
-              </div>
-              <div style={{ padding: "0.5rem" }}>
-                <button
-                  className="btn btn-danger"
-                  onClick={handleClick}
-                  value={todo._id}
-                >
-                  Eliminar
-                </button>
-              </div>
+                Eliminar
+              </button>
             </div>
           );
         })}
-        <footer style={{ display: "flex", padding: "0.5rem", justifyContent: "space-between" }}>
+        <footer
+          style={{
+            display: "flex",
+            padding: "0.5rem",
+            justifyContent: "space-between",
+          }}
+        >
           <span>
             {count} {count === 1 ? "work" : "works"}
           </span>
