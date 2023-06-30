@@ -7,19 +7,31 @@ import {
   checkTodo,
 } from "./functions/api";
 
+import { credentials } from "./functions/apiUser";
+
 const Todo = () => {
   const [todos, setTodo] = useState([]);
   const [count, setCount] = useState([]);
   const [title, setTitle] = useState("");
   const [filter, setFilter] = useState([]);
 
+  const token = localStorage.getItem("token")
+
   const getAllTodos = async () => {
-    const resp = await getTodos();
+    const body = {
+      token:token
+    }
+    const userData = await credentials(body)
+    const resp = await getTodos(userData._id);
     setTodo(resp);
   };
 
   const countPendingTodos = async () => {
-    const resp = await getPendingsTodos();
+    const body = {
+      token:token
+    }
+    const userData = await credentials(body)
+    const resp = await getPendingsTodos(userData._id);
     setCount(resp);
   };
 
@@ -52,9 +64,15 @@ const Todo = () => {
   };
 
   const handleKeyDown = async () => {
+    
     if (event.key === "Enter") {
+      const body = {
+        token:token
+      }
+      const userData = await credentials(body)
       const titleObj = {
         title: title,
+        user: userData._id
       };
       await createTodo(titleObj);
       setTitle("");
@@ -90,7 +108,7 @@ const Todo = () => {
   }, [todos]);
 
   return (
-    <div style={{ paddingTop: "15vh" }}>
+    <div style={{paddingTop: "15vh"}}>
       <h1 style={{ textAlign: "center" }}>
         <span style={{ color: "red", fontSize: "3rem" }}>
           TODO <span style={{ color: "black" }}>-List</span>

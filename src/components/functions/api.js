@@ -3,8 +3,8 @@ import axios from "axios";
 const API_URL =
   "https://todo-list-api-production-419d.up.railway.app/api/todos";
 
-export const getTodos = async () => {
-  const { data } = await axios.get(API_URL);
+export const getTodos = async (id) => {
+  const { data } = await axios.get(`${API_URL}/${id}`);
   return data;
 };
 
@@ -18,8 +18,8 @@ export const deleteTodo = async (id) => {
   return data;
 };
 
-export const getPendingsTodos = async () => {
-  const { data } = await axios.get(`${API_URL}/pendings`);
+export const getPendingsTodos = async (id) => {
+  const { data } = await axios.get(`${API_URL}/pendings/${id}`);
   return data;
 };
 
