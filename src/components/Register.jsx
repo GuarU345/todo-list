@@ -27,7 +27,7 @@ const Register = () => {
             setUsername("")
             setEmail("")
             setPassword("")
-            navigate('/login')
+            navigate('/')
         }catch{
             Swal.fire({
                 icon: 'error',
@@ -58,7 +58,7 @@ const Register = () => {
         </div>
         <div className="input-group mb-3">
             <span className="input-group-text"><i className="bi bi-unlock"></i></span>
-            <input type="text" className="form-control" placeholder="Password" value={password} onChange={() => setPassword(event.target.value)} aria-label="Password" aria-describedby="basic-addon1"/>
+            <input type="password" className="form-control" placeholder="Password" value={password} onChange={() => setPassword(event.target.value)} aria-label="Password" aria-describedby="basic-addon1"/>
         </div>
         <input type="submit" onClick={handleClick} className="btn btn-success" />
         </form>

@@ -55,7 +55,7 @@ const Login = () => {
             <i className="bi bi-unlock"></i>
           </span>
           <input
-            type="text"
+            type="password"
             className="form-control"
             placeholder="Password"
             value={password}
