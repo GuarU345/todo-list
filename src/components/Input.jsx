@@ -1,6 +1,7 @@
 import { createTodo } from "./functions/api";
 import { credentials } from "./functions/apiUser";
 
+// eslint-disable-next-line react/prop-types
 const Input = ({evt,evtTitle,title}) => {
   const handleChange = (event) => {
     evtTitle(event.target.value);

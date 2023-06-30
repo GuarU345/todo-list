@@ -24,13 +24,17 @@ const Login = () => {
     }
   };
 
+  const goToRegister = () => {
+    navigate('/register')
+  }
+
   const handleClick = (event) => {
     event.preventDefault();
     loginAccount();
   };
   return (
-    <div>
-      <form>
+    <div style={{paddingTop:"15vh"}}>
+      <form style={{display:"flex",flexDirection:"column"}}>
         <h3>Login</h3>
         <div className="input-group mb-3">
           <span className="input-group-text">
@@ -65,6 +69,8 @@ const Login = () => {
           onClick={handleClick}
           className="btn btn-success"
         />
+        <br />
+        <a style={{textAlign:"center",cursor:"pointer"}} onClick={goToRegister}>If you not registered go to register</a>
       </form>
     </div>
   );

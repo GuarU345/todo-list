@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import {
   getTodos,
-  createTodo,
   getPendingsTodos,
 } from "./functions/api";
 
