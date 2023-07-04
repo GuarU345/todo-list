@@ -1,37 +1,34 @@
-import { deleteTodo,checkTodo } from "./functions/api";
+import { deleteTodo, checkTodo } from "./functions/api";
 
 // eslint-disable-next-line react/prop-types
-const TodoList = ({filter, evt}) => {
+const TodoList = ({ filter, evt }) => {
+  const deleteOneTodo = async (id) => {
+    await deleteTodo(id);
+  };
 
-    const deleteOneTodo = async (id) => {
-        await deleteTodo(id);
-      };
+  const handleClick = async (event) => {
+    event.preventDefault();
+    const todoId = event.target.value;
+    await deleteOneTodo(todoId);
+    await evt();
+  };
 
-    const handleClick = async (event) => {
-        event.preventDefault();
-        const todoId = event.target.value;
-        await deleteOneTodo(todoId);
-        await evt()
-      };
+  const handleChangeCheck = async (event) => {
+    const checked = event.target.checked;
 
-    const handleChangeCheck = async (event) => {
-        const checked = event.target.checked;
-    
-        const todoId = event.target.value;
-        const body = {
-          completed: checked,
-        };
-        await checkTodo(todoId, body);
-        await evt()
-
-      };
-
+    const todoId = event.target.value;
+    const body = {
+      completed: checked,
+    };
+    await checkTodo(todoId, body);
+    await evt();
+  };
 
   return (
     <div>
-        {
-          // eslint-disable-next-line react/prop-types
-          filter.map((todo) => {
+      {
+        // eslint-disable-next-line react/prop-types
+        filter.map((todo) => {
           return (
             <div key={todo._id} className="todo-item">
               <input
@@ -41,7 +38,13 @@ const TodoList = ({filter, evt}) => {
                 value={todo._id}
                 checked={todo.completed}
               />
-              <p>{todo.title}</p>
+              <p
+                style={{
+                  textDecoration: `${todo.completed ? "line-through" : ""}`,
+                }}
+              >
+                {todo.title}
+              </p>
               <button
                 className="btn btn-danger"
                 onClick={handleClick}
@@ -51,9 +54,10 @@ const TodoList = ({filter, evt}) => {
               </button>
             </div>
           );
-        })}
+        })
+      }
     </div>
-  )
-}
+  );
+};
 
-export default TodoList
+export default TodoList;
