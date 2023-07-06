@@ -1,5 +1,4 @@
 import { createTodo } from "./functions/api";
-import { credentials } from "./functions/apiUser";
 
 // eslint-disable-next-line react/prop-types
 const Input = ({evt,evtTitle,title}) => {
@@ -7,19 +6,13 @@ const Input = ({evt,evtTitle,title}) => {
     evtTitle(event.target.value);
   };
 
-  const token = localStorage.getItem("token")
-
   const handleKeyDown = async () => {
     if (event.key === "Enter") {
-      const body = {
-        token: token,
-      };
-      const userData = await credentials(body);
+      const token = localStorage.getItem('token')
       const titleObj = {
         title: title,
-        user: userData._id,
       };
-      await createTodo(titleObj);
+      await createTodo(titleObj,token);
       evtTitle("");
       await evt();
     }

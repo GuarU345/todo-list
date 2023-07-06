@@ -1,15 +1,17 @@
 import axios from "axios";
 
-const API_URL =
+const isDev = true
+
+const API_URL = isDev ? "http://localhost:3333/api/todos" :
   "https://todo-list-api-production-419d.up.railway.app/api/todos";
 
-export const getTodos = async (id) => {
-  const { data } = await axios.get(`${API_URL}/${id}`);
+export const getTodos = async (token) => {
+  const { data } = await axios.get(`${API_URL}`, {headers: {Authorization: token}});
   return data;
 };
 
-export const createTodo = async (body) => {
-  const { data } = await axios.post(API_URL, body);
+export const createTodo = async (body,token) => {
+  const { data } = await axios.post(API_URL, body, {headers: {Authorization: token}});
   return data;
 };
 
@@ -18,8 +20,8 @@ export const deleteTodo = async (id) => {
   return data;
 };
 
-export const getPendingsTodos = async (id) => {
-  const { data } = await axios.get(`${API_URL}/pendings/${id}`);
+export const getPendingsTodos = async (token) => {
+  const { data } = await axios.get(`${API_URL}/pendings`,{headers: {Authorization: token}});
   return data;
 };
 

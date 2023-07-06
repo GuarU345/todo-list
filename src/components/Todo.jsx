@@ -4,10 +4,10 @@ import {
   getPendingsTodos,
 } from "./functions/api";
 
-import { credentials } from "./functions/apiUser";
 import Filters from "./Filters";
 import TodoList from "./TodoList";
 import Input from "./Input";
+import Logout from "./UserComponents/Logout";
 
 const Todo = () => {
   const [todos, setTodo] = useState([]);
@@ -20,14 +20,9 @@ const Todo = () => {
     setFilter(a)
   }
 
-  const token = localStorage.getItem("token")
-
   const getAllTodos = async () => {
-    const body = {
-      token:token
-    }
-    const userData = await credentials(body)
-    const resp = await getTodos(userData._id);
+    const token = localStorage.getItem('token')
+    const resp = await getTodos(token);
     setTodo(resp);
   };
 
@@ -40,11 +35,8 @@ const Todo = () => {
   }
 
   const countPendingTodos = async () => {
-    const body = {
-      token:token
-    }
-    const userData = await credentials(body)
-    const resp = await getPendingsTodos(userData._id);
+    const token = localStorage.getItem("token")
+    const resp = await getPendingsTodos(token);
     setCount(resp);
   };
 
@@ -61,6 +53,8 @@ const Todo = () => {
   }, [todos]);
 
   return (
+    <div style={{display:'flex',flexDirection:'column'}}>
+    <Logout/>
     <div style={{paddingTop: "15vh"}}>
       <h1 style={{ textAlign: "center" }}>
         <span style={{ color: "red", fontSize: "3rem" }}>
@@ -78,6 +72,7 @@ const Todo = () => {
         <TodoList filter={filter} evt={handleEvent}/>
         <Filters todos={todos} count={count} filt={fn}/>
       </section>
+    </div>
     </div>
   );
 };

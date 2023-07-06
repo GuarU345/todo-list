@@ -1,7 +1,7 @@
 import "./App.css";
-import Register from "./components/Register";
+import Register from "./components/UserComponents/Register";
 import Todo from "./components/Todo"
-import Login from "./components/Login";
+import Login from "./components/UserComponents/Login";
 import { Routes,Route,BrowserRouter } from "react-router-dom";
 
 function App() {

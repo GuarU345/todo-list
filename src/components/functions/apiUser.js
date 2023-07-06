@@ -1,13 +1,16 @@
 import axios from "axios";
 
-const USER_API_URL = "https://todo-list-api-production-419d.up.railway.app/api"
+const isDev = true
+
+ const USER_API_URL = isDev ?  "http://localhost:3333/api"
+ : "https://todo-list-api-production-419d.up.railway.app/api"
 
 export const register = async(body) => {
     try {
         const {data} = await axios.post(`${USER_API_URL}/register`,body)
         return data
     } catch (error) {
-        console.error(error)
+        throw new Error(error)
     }
 }
 
@@ -16,15 +19,14 @@ export const login = async(body) => {
         const {data} = await axios.post(`${USER_API_URL}/login`,body)
         return data
     } catch (error) {
-        console.error(error)
+        throw new Error(error)
     }
 }
 
-export const credentials = async(token) => {
+export const logout = async(token) => {
     try {
-        const {data} = await axios.post(`${USER_API_URL}/credentials`,token)
-        return data
+        await axios.post(`${USER_API_URL}/logout`,{}, {headers: {Authorization: token}})
     } catch (error) {
-        console.error(error)
+        throw new Error(error)
     }
 }

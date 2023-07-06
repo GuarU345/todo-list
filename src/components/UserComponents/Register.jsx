@@ -1,6 +1,5 @@
 import { useState } from "react";
-import "./Register.css";
-import { register } from "./functions/apiUser";
+import { register } from "../functions/apiUser";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
@@ -19,11 +18,11 @@ const Register = () => {
             password:password
         }
         try{
+            await register(body)
             Swal.fire({
                 icon: 'success',
                 title: 'User created successfully'
             })
-            await register(body)
             setUsername("")
             setEmail("")
             setPassword("")

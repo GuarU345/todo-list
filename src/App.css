@@ -69,6 +69,12 @@ span {
   border: 1px solid red;
 }
 
+.logout{
+  align-self: flex-end;
+  margin-top: 2rem;
+  border: 1px solid white;
+}
+
 @media screen and (min-width: 768px) {
   input[type="checkbox"] {
     height: 32px;

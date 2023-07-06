@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { login } from "./functions/apiUser";
+import { login } from "../functions/apiUser";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,11 +17,18 @@ const Login = () => {
     try {
       const token = await login(body);
       localStorage.setItem("token", token);
+      Swal.fire({
+        icon: 'success',
+        title: 'Login successfull'
+      })
       setEmail("");
       setPassword("");
       navigate('/todos')
     } catch (error) {
-        console.error(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid user or password'
+      })
     }
   };
 
