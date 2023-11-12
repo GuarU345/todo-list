@@ -4,7 +4,7 @@ const isDev = false;
 
 const API_URL = isDev
   ? "http://localhost:3000/api/todos"
-  : "https://todo-list-api-express-dev-jbth.3.us-1.fl0.io";
+  : "https://todo-list-api-express-dev-jbth.3.us-1.fl0.io/api/todos";
 
 export const getTodos = async (token) => {
   const { data } = await axios.get(`${API_URL}`, {
