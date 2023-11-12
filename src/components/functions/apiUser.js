@@ -4,7 +4,7 @@ const isDev = false;
 
 const USER_API_URL = isDev
   ? "http://localhost:3000"
-  : "https://todo-list-api-express-3aiq-dev.fl0.io";
+  : "https://todo-list-api-express-dev-jbth.3.us-1.fl0.io";
 
 export const register = async (body) => {
   try {
