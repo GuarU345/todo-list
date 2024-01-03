@@ -37,6 +37,10 @@ registrar tus tareas
 finalizadas
 - Acciones: Eliminar y finalizar tareas
 
+# Imagenes del proyecto
+
+![Imagen de la lista de tareas](public/todo-list.png)
+
 ## Contribuciones
 
 - Crea un fork del repositorio
