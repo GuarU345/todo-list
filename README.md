@@ -13,7 +13,7 @@ eliminando para que no se te acumulen
 ## Instalacion
 
 ```bash
-git clone https://github.com/GuarU345/pokedex_react.git
+git clone https://github.com/GuarU345/todo-list.git
 ```
 
 ```bash
